@@ -12,6 +12,7 @@ import com.educandoweb.courseSpring.Repository.OrderRepository;
 import com.educandoweb.courseSpring.Repository.UserRepository;
 import com.educandoweb.courseSpring.entities.Order;
 import com.educandoweb.courseSpring.entities.User;
+import com.educandoweb.courseSpring.enums.OrderStatus;
 
 @Configuration
 @Profile("test")
@@ -30,9 +31,9 @@ public class TesteConfig implements CommandLineRunner{
 		User u2 = new User(null, "Alex Green", "alex@gmail.com", "977777777", "123456");
 		
 		
-		Order o1 = new Order(null, Instant.parse("2025-12-25T19:53:07Z"), u1); 
-		Order o2 = new Order(null, Instant.parse("2025-07-21T03:42:10Z"), u2); 
-		Order o3 = new Order(null, Instant.parse("2025-05-22T15:21:22Z"), u1); 
+		Order o1 = new Order(null, Instant.parse("2025-12-25T19:53:07Z"),OrderStatus.PAID, u1); 
+		Order o2 = new Order(null, Instant.parse("2025-07-21T03:42:10Z"),OrderStatus.WAITING_PAYMENT, u2); 
+		Order o3 = new Order(null, Instant.parse("2025-05-22T15:21:22Z"),OrderStatus.WAITING_PAYMENT, u1); 
 
 		
 		userRepository.saveAll(Arrays.asList(u1,u2));
