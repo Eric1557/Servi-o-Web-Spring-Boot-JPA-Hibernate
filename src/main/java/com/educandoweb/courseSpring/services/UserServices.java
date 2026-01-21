@@ -25,9 +25,12 @@ public class UserServices {
 		
 	}
 	
-	public User Insert(User obj) {
+	public User insert(User obj) {
 		return repository.save(obj);
 	}
 	
-
+	public void delete(Integer id) {
+	  repository.deleteById(id);
+	}
+	
 }
