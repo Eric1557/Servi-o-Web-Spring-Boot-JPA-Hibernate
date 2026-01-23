@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.educandoweb.courseSpring.Repository.UserRepository;
 import com.educandoweb.courseSpring.entities.User;
+import com.educandoweb.courseSpring.services.exception.ResourceNotFoundException;
 
 @Service
 public class UserServices {
@@ -21,7 +22,7 @@ public class UserServices {
 	}
 	public User findByld(Integer id) {
 		Optional<User> obj = repository.findById(id);
-		return obj.get();
+		return obj.orElseThrow(()-> new ResourceNotFoundException(id));
 		
 	}
 	
